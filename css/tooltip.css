@@ -1,0 +1,31 @@
+.pytooltip
+{
+	position: absolute;
+	display: none;
+
+	top: 0px;
+	left: 0px;
+
+	/*width: 150px;*/
+
+	padding: 8px 20px;
+
+	background-color: #333333;
+	color: #ffffff;
+	text-align: center;
+
+	font-size: 12px;
+}
+
+.pytooltip .ttarrow
+{
+	position: absolute;
+
+	left: 50%;
+	margin-left: -6px;
+	bottom: -12px;
+
+	border-width: 6px;
+	border-style: solid;
+	border-color: #333333 transparent transparent transparent;
+}

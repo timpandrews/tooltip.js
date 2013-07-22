@@ -21,11 +21,9 @@ $.fn.hasAttr = function(name) {
 
 		that.attr("title", "");
 
-		var tooltime = ( (that.hasAttr("tooltime")) ? that.attr("tooltime") : n);
+		var tt = showTooltip(el);
 
-		t = setTimeout(function(){ showTooltip(el) }, +tooltime);
-
-		setTimeout(function(){ killtooltip(el, that); }, 3000);
+		setTimeout(function(){ killtooltip(el, that, tt); }, 3000);
 
 		checkExistence();
 
@@ -65,21 +63,16 @@ $.fn.hasAttr = function(name) {
 		});
 
 		counter++;
+
+		return tt;
 	}
 
-	function killtooltip(el, that)
+	function killtooltip(el, that, tt)
 	{
 		clearTimeout(t);
 
 		el.element.attr("title", el.content);
-		$(".pytooltip").remove();
-
-		that.off("mouseout");
-	}
-
-	function tooltip()
-	{
-		$("<div>").attr("class", "pytooltip")
+		tt.remove();
 	}
 
 })();
