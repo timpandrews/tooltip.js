@@ -9,7 +9,7 @@ $.fn.hasAttr = function(name) {
 	var t;
 	var counter = 0;
 
-	$(document).bind("tapone", "[title]", function()
+	$("[title]").bind("tapone", function()
 	{
 		var that = $(this);
 
