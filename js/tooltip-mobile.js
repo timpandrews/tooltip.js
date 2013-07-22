@@ -9,7 +9,7 @@ $.fn.hasAttr = function(name) {
 	var t;
 	var counter = 0;
 
-	$(document).on("tap", "[title]", function()
+	$(document).on("tapone", "[title]", function()
 	{
 		var that = $(this);
 
