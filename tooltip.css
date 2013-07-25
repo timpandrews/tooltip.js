@@ -1,0 +1,62 @@
+.pytooltip
+{
+	position: absolute;
+	display: none;
+
+	top: 0px;
+	left: 0px;
+
+	/*width: 150px;*/
+
+	padding: 8px 20px;
+
+	background-color: #333333;
+	color: #ffffff;
+	text-align: center;
+
+	font-size: 12px;
+}
+
+.pytooltip .ttarrow
+{
+	position: absolute;
+
+	border-width: 6px;
+	border-style: solid;
+}
+
+.pytooltip .ttarrow.top
+{
+	left: 50%;
+	margin-left: -6px;
+	bottom: -12px;
+
+	border-color: #333333 transparent transparent transparent;
+}
+
+.pytooltip .ttarrow.bottom
+{
+	left: 50%;
+	margin-left: -6px;
+	top: -12px;
+
+	border-color: transparent transparent #333333 transparent;
+}
+
+.pytooltip .ttarrow.left
+{
+	right: -12px;
+	top: 50%;
+	margin-top: -6px;
+
+	border-color: transparent transparent transparent #333333;
+}
+
+.pytooltip .ttarrow.right
+{
+	left: -12px;
+	top: 50%;
+	margin-top: -6px;
+
+	border-color: transparent #333333 transparent transparent;
+}
