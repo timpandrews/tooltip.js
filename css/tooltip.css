@@ -21,11 +21,42 @@
 {
 	position: absolute;
 
+	border-width: 6px;
+	border-style: solid;
+}
+
+.pytooltip .ttarrow.top
+{
 	left: 50%;
 	margin-left: -6px;
 	bottom: -12px;
 
-	border-width: 6px;
-	border-style: solid;
 	border-color: #333333 transparent transparent transparent;
+}
+
+.pytooltip .ttarrow.bottom
+{
+	left: 50%;
+	margin-left: -6px;
+	top: -12px;
+
+	border-color: transparent transparent #333333 transparent;
+}
+
+.pytooltip .ttarrow.left
+{
+	right: -12px;
+	top: 50%;
+	margin-top: -6px;
+
+	border-color: transparent transparent transparent #333333;
+}
+
+.pytooltip .ttarrow.right
+{
+	left: -12px;
+	top: 50%;
+	margin-top: -6px;
+
+	border-color: transparent #333333 transparent transparent;
 }

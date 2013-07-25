@@ -12,16 +12,15 @@ $.fn.hasAttr = function(name) {
 	$("[title]").bind("tapone", function()
 	{
 		if (typeof variable === 'undefined')
-		{
 			_Global_Tooltips = "undefined";
-		}
 
 		var that = $(this);
 
 		var el = {
 			"element"	: that,
 			"offset"	: that.offset(),
-			"content"	: that.attr("title")
+			"content"	: that.attr("title"),
+			"position"	: ( that.hasAttr("tool-position") ? that.attr("tool-position") : "top" )
 		};
 
 		that.attr("title", "");
@@ -29,14 +28,9 @@ $.fn.hasAttr = function(name) {
 		var tt = showTooltip(el);
 
 		if( _Global_Tooltips.toLowerCase() == "persist" )
-		{
-			console.log( $("#pytt-" + (counter - 2)) )
 			$("#pytt-" + (counter - 2)).remove();
-		}
 		else
-		{
 			setTimeout(function(){ killtooltip(el, that, tt); }, 3000);
-		}
 
 		checkExistence();
 
@@ -58,6 +52,11 @@ $.fn.hasAttr = function(name) {
 
 	function showTooltip(el)
 	{
+		var position = el.position;
+		var arrow = $("<div>").attr("class", "ttarrow");
+
+		arrow.addClass( position );
+
 		var tt = $("<div>").attr("class", "pytooltip")
 			.attr("id", "pytt-" + counter)
 			.css(
@@ -65,15 +64,42 @@ $.fn.hasAttr = function(name) {
 				"top"	: el.offset.top - el.element.outerHeight(),
 			})
 			.html( el.content )
-			.append( $("<div>").attr("class", "ttarrow") )
+			.append( arrow )
 			.appendTo("body")
 			.fadeIn();
 
-		tt.css(
+		if( position == "right" )
 		{
-			"left" 	: el.offset.left + ( el.element.outerWidth() / 2 ) - ( tt.outerWidth() / 2 ),
-			"top"	: el.offset.top - tt.outerHeight() - 12
-		});
+			tt.css(
+			{
+				"left"	: el.offset.left + el.element.outerWidth() + 12,
+				"top"	: el.offset.top + ( el.element.outerHeight() / 2) - (tt.outerHeight() / 2)
+			});
+		}
+		else if( position == "left" )
+		{
+			tt.css(
+			{
+				"left"	: el.offset.left - tt.outerWidth() - 12,
+				"top"	: el.offset.top + ( el.element.outerHeight() / 2) - (tt.outerHeight() / 2)
+			});
+		}
+		else if( position == "top" )
+		{
+			tt.css(
+			{
+				"left" 	: el.offset.left + ( el.element.outerWidth() / 2 ) - ( tt.outerWidth() / 2 ),
+				"top"	: el.offset.top - tt.outerHeight() - 12
+			});
+		}
+		else if( position == "bottom" )
+		{
+			tt.css(
+			{
+				"left"	: el.offset.left + ( el.element.outerWidth() / 2 ) - ( tt.outerWidth() / 2 ),
+				"top"	: el.offset.top + el.element.outerHeight() + 12
+			});
+		}
 
 		counter++;
 
