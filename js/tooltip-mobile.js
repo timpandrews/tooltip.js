@@ -3,7 +3,7 @@ $.fn.hasAttr = function(name) {
 };
 
 (function()
-{
+{	
 	var titles = $("[title]");
 	var n = 1000; //hover time
 	var t;
@@ -11,6 +11,11 @@ $.fn.hasAttr = function(name) {
 
 	$("[title]").bind("tapone", function()
 	{
+		if (typeof variable === 'undefined')
+		{
+			_Global_Tooltips = "undefined";
+		}
+
 		var that = $(this);
 
 		var el = {
@@ -23,7 +28,15 @@ $.fn.hasAttr = function(name) {
 
 		var tt = showTooltip(el);
 
-		setTimeout(function(){ killtooltip(el, that, tt); }, 3000);
+		if( _Global_Tooltips.toLowerCase() == "persist" )
+		{
+			console.log( $("#pytt-" + (counter - 2)) )
+			$("#pytt-" + (counter - 2)).remove();
+		}
+		else
+		{
+			setTimeout(function(){ killtooltip(el, that, tt); }, 3000);
+		}
 
 		checkExistence();
 
